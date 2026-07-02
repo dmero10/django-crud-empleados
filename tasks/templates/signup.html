@@ -1,13 +1,39 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
 
-<div class="container">
-  <h1>Signup</h1>
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-4">
+    <div class="card shadow-sm mt-5">
+      <div class="card-body p-4">
+        <h3 class="text-center mb-4">Crear cuenta</h3>
 
-  {{error}}
+        {% if error %}
+        <div class="alert alert-danger py-2" role="alert">
+          {{ error }}
+        </div>
+        {% endif %}
 
-  <form action="/signup/" method="POST">
-    {% csrf_token %} {{form.as_p}}
-    <button class="btn btn-primary">Signup</button>
-  </form>
+        <form action="/signup/" method="POST">
+          {% csrf_token %}
+          <div class="mb-3">
+            <input type="text" name="username" class="form-control" placeholder="Usuario" required autofocus>
+          </div>
+          <div class="mb-3">
+            <input type="password" name="password1" class="form-control" placeholder="Contraseña" required>
+          </div>
+          <div class="mb-3">
+            <input type="password" name="password2" class="form-control" placeholder="Repite la contraseña" required>
+          </div>
+          <div class="d-grid">
+            <button class="btn btn-primary">Registrarse</button>
+          </div>
+        </form>
+
+        <p class="text-center text-muted mt-3 mb-0">
+          ¿Ya tienes cuenta? <a href="/signin/">Inicia sesión</a>
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
