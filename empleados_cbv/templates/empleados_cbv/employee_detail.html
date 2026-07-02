@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <h1>{{ employee.first_name }} {{ employee.last_name }}</h1>
+
+  <ul class="list-group mb-3">
+    <li class="list-group-item">Email: {{ employee.email }}</li>
+    <li class="list-group-item">Salary: ${{ employee.salary }}</li>
+    <li class="list-group-item">Hire date: {{ employee.hire_date }}</li>
+    <li class="list-group-item">Position: {{ employee.position.name }}</li>
+  </ul>
+
+  <a href="{% url 'employee_update_cbv' employee.id %}" class="btn btn-warning">Edit</a>
+  <a href="{% url 'employee_delete_cbv' employee.id %}" class="btn btn-danger">Delete</a>
+  <a href="{% url 'employee_list_cbv' %}" class="btn btn-secondary">Back</a>
+</div>
+{% endblock %}

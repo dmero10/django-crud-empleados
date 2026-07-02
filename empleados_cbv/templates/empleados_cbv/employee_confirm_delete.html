@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <h1>Delete Employee (CBV)</h1>
+
+  <p>Are you sure you want to delete
+    <strong>{{ employee.first_name }} {{ employee.last_name }}</strong>?</p>
+
+  <form method="POST">
+    {% csrf_token %}
+    <button class="btn btn-danger">Yes, delete</button>
+    <a href="{% url 'employee_list_cbv' %}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <h1>Employees (CBV)</h1>
+
+  <a href="{% url 'employee_create_cbv' %}" class="btn btn-primary mb-3">New Employee</a>
+
+  <ul class="list-group">
+    {% for employee in employees %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="{% url 'employee_detail_cbv' employee.id %}">
+        {{ employee.first_name }} {{ employee.last_name }} — {{ employee.position.name }}
+      </a>
+      <span>
+        <a href="{% url 'employee_update_cbv' employee.id %}" class="btn btn-sm btn-warning">Edit</a>
+        <a href="{% url 'employee_delete_cbv' employee.id %}" class="btn btn-sm btn-danger">Delete</a>
+      </span>
+    </li>
+    {% empty %}
+    <li class="list-group-item">No employees yet.</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
